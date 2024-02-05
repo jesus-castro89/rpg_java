@@ -7,10 +7,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Use Node.js 16
-      uses: actions/setup-node@v2
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
       with:
-       node-version: '16'
+       # choose node.js version to use
+       node-version: 20
 
     - name: Install Yarn
       run: curl -o- -L https://yarnpkg.com/install.sh | bash
