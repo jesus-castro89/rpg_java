@@ -16,14 +16,8 @@ jobs:
     - name: Install Yarn
       run: curl -o- -L https://yarnpkg.com/install.sh | bash
 
-    - name: Verify Yarn version
+    - name: Verify Stable
       run: yarn set version stable
-      
-    - name: Verify Yarn version
-      run: yarn install           
-
-    - name: Verify Yarn version
-      run: yarn --version
 
     - name: Install dependencies
       run: yarn install
