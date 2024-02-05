@@ -7,19 +7,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-
-    - name: Set up Node.js environment
+    - name: Use Node.js 16
       uses: actions/setup-node@v2
       with:
-        node-version: '16'
+       node-version: '16'
+
+    - name: Install Yarn
+      run: curl -o- -L https://yarnpkg.com/install.sh | bash
+
+    - name: Verify Yarn version
+      run: yarn --version
 
     - name: Install dependencies
       run: yarn install
 
     - name: Build VuePress site
       run: yarn build
-
+      
     - name: Checkout gh-pages branch
       uses: actions/checkout@v2
       with:
