@@ -1,42 +1,51 @@
-name: Deploy to GitHub pages
+name: docs
+
 on:
- push:
-    branches: [ main ]
+  # trigger deployment on every push to main branch
+  push:
+    branches: [main]
+  # trigger deployment manually
+  workflow_dispatch:
+
 jobs:
- build:
+  docs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-       # choose node.js version to use
-       node-version: 20
+      - uses: actions/checkout@v4
+        with:
+          # fetch all commits to get last updated time or other git log info
+          fetch-depth: 0
 
-    - name: Install Yarn
-      run: curl -o- -L https://yarnpkg.com/install.sh | bash
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          # choose pnpm version to use
+          version: 8
+          # install deps with pnpm
+          run_install: true
 
-    - name: Verify Stable
-      run: yarn set version stable
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          # choose node.js version to use
+          node-version: 20
+          # cache deps for pnpm
+          cache: pnpm
 
-    - name: Install dependencies
-      run: yarn install
+      # run build script
+      - name: Build VuePress site
+        run: pnpm docs:build
 
-    - name: Build VuePress site
-      run: yarn build
-      
-    - name: Checkout gh-pages branch
-      uses: actions/checkout@v2
-      with:
-        ref: gh-pages
-
-    - name: Copy files to gh-pages branch
-      run: cp -R .vuepress/dist/* .
-
-    - name: Commit and push to gh-pages
-      run: |
-        git config --global user.name 'GitHub Action'
-        git config --global user.email 'action@github.com'
-        git add .
-        git commit -m 'Deploy to GitHub Pages'
-        git push
+      # please check out the docs of the workflow for more details
+      # @see https://github.com/crazy-max/ghaction-github-pages
+      - name: Deploy to GitHub Pages
+        uses: crazy-max/ghaction-github-pages@v4
+        with:
+          # deploy to gh-pages branch
+          target_branch: gh-pages
+          # deploy the default output dir of VuePress
+          build_dir: docs/.vuepress/dist
+        env:
+          # @see https://docs.github.com/en/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
