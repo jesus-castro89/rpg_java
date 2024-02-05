@@ -9,26 +9,29 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Generate static VuePress files
+    - name: Set up Node.js environment
       uses: actions/setup-node@v2
       with:
         node-version: '16'
-    - run: npm ci
-    - run: npm run build
 
-    - name: Init new repo in dist folder and commit generated files
-      run: |
-        cd docs/.vuepress/dist
-        git init
-        git add -A
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git commit -m 'deploy'
+    - name: Install dependencies
+      run: yarn install
 
-    - name: Force push to destination branch
-      uses: ad-m/github-push-action@v0.5.0
+    - name: Build VuePress site
+      run: yarn build
+
+    - name: Checkout gh-pages branch
+      uses: actions/checkout@v2
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: gh-pages
-        force: true
-        directory: ./docs/.vuepress/dist
+        ref: gh-pages
+
+    - name: Copy files to gh-pages branch
+      run: cp -R .vuepress/dist/* .
+
+    - name: Commit and push to gh-pages
+      run: |
+        git config --global user.name 'GitHub Action'
+        git config --global user.email 'action@github.com'
+        git add .
+        git commit -m 'Deploy to GitHub Pages'
+        git push
