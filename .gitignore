@@ -17,3 +17,8 @@ yarn-error.log
 /.editorconfig
 /yarn.lock
 /.yarn/
+
+node_modules/
+doc_n/.vuepress/.cache/
+doc_n/.vuepress/.temp/
+doc_n/.vuepress/dist/
