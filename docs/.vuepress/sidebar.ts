@@ -19,5 +19,11 @@ export default sidebar({
             icon: "user",
             children:["guide/player/README.md", "guide/player/armors.md"]
         },
+        {
+            text: "2.- Los enemigos",
+            collapsible: true,
+            icon: "wand-sparkles",
+            children:["guide/enemies/README.md", "guide/enemies/player.md"]
+        },
     ]
 });
