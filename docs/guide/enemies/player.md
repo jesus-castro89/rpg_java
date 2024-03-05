@@ -4,6 +4,42 @@ title: Actualizando el Jugador
 description: En esta ocasión debemos de actualizar nuestra clase Player para generar los stats de forma aleatoria mientras agregamos las mecánicas de atacar y recibir daño.
 ---
 
+## BasicCharacter
+
+Antes de modificar a nuestro jugador, es hora de modificar a nuestra clase base de la siguiente manera:
+
+```java{22-24,26-28}
+    package characters;
+    
+    public abstract class BasicCharacter {
+    
+        protected String name;
+        protected int hp;
+        protected int mp;
+        protected int maxHp;
+        protected int maxMp;
+    
+        public BasicCharacter(String name, int hp, int mp) {
+    
+            this.name = name;
+            this.hp = hp;
+            this.mp = mp;
+            this.maxHp = hp;
+            this.maxMp = mp;
+        }
+    
+        public abstract void displayData();
+    
+        public void takeDamage(int damage) {
+            hp -= damage;
+        }
+    
+        public boolean isDead() {
+            return hp <= 0;
+        }
+    }
+```
+
 ## Player
 
 Con el enemigo creado, es momento de modificar a nuestro Player para agregar un conjunto de funciones para recibir y
@@ -14,21 +50,27 @@ hacer daño a los enemigos.
 La función randomizeStats permitirá asignar un número de puntos determinado entre la totalidad de stats del personaje.
 
 ```java
-    private void randomizeStats(int maxPoints) {
+    public void randomizeStats(int maxPoints) {
 
-        int stat = Randomized.randomize(1, 5);
-        while (maxPoints > 0) {
-            switch (stat) {
-                case 1 -> strength++;
-                case 2 -> defense++;
-                case 3 -> intelligence++;
-                case 4 -> dexterity++;
-                case 5 -> luck++;
-            }
-            maxPoints--;
-            stat = Randomized.randomize(1, 5);
-        }
-    }
+		int stat = Randomized.randomizeNumber(1, 5);
+		while (maxPoints > 0) {
+			switch (stat) {
+				case 1 -> {
+					if (strength < (level * 5)) strength++;
+					else maxPoints++;
+				}
+				case 2 -> {
+					if (defense < (level * 5)) defense++;
+					else maxPoints++;
+				}
+				case 3 -> intelligence++;
+				case 4 -> dexterity++;
+				case 5 -> luck++;
+			}
+			maxPoints--;
+			stat = Randomized.randomizeNumber(1, 5);
+		}
+	}
 ```
 
 En esta clase de ejemplo, podemos ver que se toman 30 puntos totales entre los 5 stats del personaje, si notamos en el
@@ -40,6 +82,7 @@ Para que esto funcione, deberemos de invocar esta función dentro el constructor
 
 ```java
     public Player(String name) {
+    
         super(name, 30, 10);
         randomizeStats(30);
         experience = 0;
@@ -58,15 +101,14 @@ manera:
 ```java
     public void attack(Enemy enemy) {
 
-        if (weapon != null) enemy.takeDamage(getDamage());
-        else enemy.takeDamage(getDamage());
-        System.out.println(getName() + " attacks for " + getDamage() + " damage!");
-        if (enemy.isDead()) {
-            
-            gainExperience(enemy.getExperience());
-            gainGold(enemy.getGold());
-        }
-    }
+		System.out.println(getName() + " attacks for " + getDamage() + " damage!");
+		enemy.takeDamage(getDamage());
+		if (enemy.isDead()) {
+
+			gainExperience(enemy.getExperience());
+			gainGold(enemy.getGold());
+		}
+	}
     
     public void gainExperience(int experience) {
 
@@ -105,10 +147,7 @@ una lógica determinada.
             if (damage < 0) damage = 0;
         }
         super.takeDamage(damage);
-        if (isDead()){
-        
-            System.out.println("You have died!");
-        }
+        if (isDead()) printDeath();
     }
 ```
 

@@ -68,7 +68,7 @@ public abstract class Enemy {
     // Recuerda definir un constructor para esta clase
 
     public void takeDamage(int damage) {
-    
+
         System.out.println(name + " takes " + damage + " damage!");
         health -= damage;
         if (isDead())
@@ -96,41 +96,38 @@ import static util.Randomized.randomize;
 
 public class RookieGoblin extends Enemy {
 
-    public RookieGoblin() {
-    
-        super("Rookie Goblin", 20, 2, 5, 5);
-    }
+	public RookieGoblin() {
 
-    @Override
-    public void attack(Player player) {
-    
-        switch (randomize(0, 2)) {
-        
-            case 0 -> {
-                System.out.println("Rookie Goblin attacks for " + getDamage() + " damage!");
-                player.takeDamage(getDamage());
-            }
-            case 1 -> runAway();
-            case 2 -> stealGold(player);
-        }
-    }
-    
-    public void simpleAttack(){
-    
-        System.out.println("Rookie Goblin attacks for " + getDamage() + " damage!");
-        player.takeDamage(getDamage());
-    }
+		super("Rookie Goblin", 20, 2, 5, 5);
+	}
 
-    public void runAway() {
-    
-        System.out.println("Rookie Goblin runs away!");
-        this.setHealth(0);
-    }
+	@Override
+	public void attack(Player player) {
 
-    public void stealGold(Player player) {
-    
-        System.out.println("Rookie Goblin steals 5 gold!");
-        player.setGold(player.getGold() - 5);
-    }
+		switch (Randomized.randomizeNumber(0, 2)) {
+
+			case 0 -> plainAttack(player);
+			case 1 -> runAway();
+			case 2 -> stealGold(player);
+		}
+	}
+
+	private void plainAttack(@NotNull Player player) {
+
+		System.out.println("Rookie Goblin attacks for " + getDamage() + " damage!");
+		player.takeDamage(getDamage());
+	}
+
+	public void runAway() {
+
+		System.out.println("Rookie Goblin runs away!");
+		this.setHealth(0);
+	}
+
+	public void stealGold(@NotNull Player player) {
+
+		System.out.println("Rookie Goblin steals 5 gold!");
+		player.setGold(player.getGold() - 5);
+	}
 }
 ```

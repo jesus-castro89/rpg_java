@@ -17,13 +17,19 @@ export default sidebar({
             text: "1.- El personaje",
             collapsible: true,
             icon: "user",
-            children:["guide/player/README.md", "guide/player/armors.md"]
+            children: ["guide/player/README.md", "guide/player/armors.md"]
         },
         {
             text: "2.- Los enemigos",
             collapsible: true,
             icon: "wand-sparkles",
-            children:["guide/enemies/README.md", "guide/enemies/player.md"]
+            children: ["guide/enemies/README.md", "guide/enemies/player.md"]
+        },
+        {
+            text: "3.- El Inventario y los Items",
+            collapsible: true,
+            icon: "briefcase",
+            children: ["guide/inventory/item.md", "guide/inventory/README.md"]
         },
     ]
 });
