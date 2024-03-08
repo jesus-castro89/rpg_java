@@ -84,12 +84,12 @@ Para que esto funcione, deberemos de invocar esta función dentro el constructor
     public Player(String name) {
     
         super(name, 30, 10);
-        randomizeStats(30);
         experience = 0;
         level = 1;
         gold = 0;
         weapon = null;
         armor = null;
+        randomizeStats(30);
     }
 ```
 

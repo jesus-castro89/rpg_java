@@ -23,13 +23,13 @@ export default sidebar({
             text: "2.- Los enemigos",
             collapsible: true,
             icon: "wand-sparkles",
-            children: ["guide/enemies/README.md", "guide/enemies/player.md"]
+            children: ["guide/enemies/structure.md", "guide/enemies/README.md", "guide/enemies/player.md"]
         },
         {
             text: "3.- El Inventario y los Items",
             collapsible: true,
             icon: "briefcase",
-            children: ["guide/inventory/item.md", "guide/inventory/README.md"]
+            children: ["guide/enemies/structure.md", "guide/inventory/item.md", "guide/inventory/README.md"]
         },
     ]
 });
