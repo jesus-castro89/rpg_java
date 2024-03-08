@@ -29,7 +29,7 @@ export default sidebar({
             text: "3.- El Inventario y los Items",
             collapsible: true,
             icon: "briefcase",
-            children: ["guide/enemies/structure.md", "guide/inventory/item.md", "guide/inventory/README.md"]
+            children: ["guide/inventory/structure.md", "guide/inventory/item.md", "guide/inventory/README.md"]
         },
     ]
 });

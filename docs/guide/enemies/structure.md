@@ -1,5 +1,5 @@
 ---
-icon: user
+icon: briefcase
 title: Estructura
 description: Veamos la estructura de nuestro archivos
 ---
