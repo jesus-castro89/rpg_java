@@ -1,0 +1,5 @@
+
+User-agent:*
+Disallow:
+
+Sitemap: https://jesus-castro89.github.io/rpg_java/rpg_java/sitemap.xml
