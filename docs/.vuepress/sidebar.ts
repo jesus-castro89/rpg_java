@@ -31,5 +31,13 @@ export default sidebar({
             icon: "briefcase",
             children: ["guide/inventory/structure.md", "guide/inventory/item.md", "guide/inventory/README.md"]
         },
+        {
+            text: "4.- El primer ciclo de juego",
+            collapsible: true,
+            icon: "gamepad",
+            children: ["guide/interactions/structure.md", "guide/interactions/README.md", "guide/interactions/drop.md",
+                "guide/interactions/items.md", "guide/interactions/player.md", "guide/interactions/game.md",
+                "guide/interactions/file.md"]
+        },
     ]
 });

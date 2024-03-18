@@ -53,6 +53,8 @@ export default hopeTheme({
             sup: true,
             tabs: true,
             vPre: true,
+            // install flowchart.ts before enabling it
+            flowchart: true,
 
             // install chart.js before enabling it
             // chart: true,
@@ -61,9 +63,6 @@ export default hopeTheme({
 
             // install echarts before enabling it
             // echarts: true,
-
-            // install flowchart.ts before enabling it
-            flowchart: true,
 
             // gfm requires mathjax-full to provide tex support
             // gfm: true,
