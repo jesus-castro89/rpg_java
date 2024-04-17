@@ -32,7 +32,7 @@ sub1->ed
 
 Dentro de este menú lo que deberemos de hacer es permitir al jugador hacer alguna de las siguientes opciones:
 
-1. Ver sus estadisticas
+1. Ver sus estadísticas
 2. Ver su inventario
 3. Atacar a los enemigos (siempre que exista alguno)
 4. Equipar una armadura

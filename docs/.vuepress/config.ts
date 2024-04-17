@@ -9,5 +9,5 @@ export default defineUserConfig({
     lang: 'es-ES',
     title: 'RPG Java',
     description: 'Juego RPG de acción en 2D con scroll lateral.',
-    head: [['link', {rel: 'icon', href: '/images/favicon.ico'}]],
+    head: [['link', {rel: 'icon', href: '/rpg_java/images/favicon.ico'}]],
 })

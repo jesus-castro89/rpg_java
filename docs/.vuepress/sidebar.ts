@@ -39,5 +39,12 @@ export default sidebar({
                 "guide/interactions/items.md", "guide/interactions/player.md", "guide/interactions/game.md",
                 "guide/interactions/file.md"]
         },
+        {
+            text: "5.- La interfaz Gráfica",
+            collapsible: true,
+            icon: "gamepad",
+            children: ["guide/interfaz/structure.md", "guide/interfaz/README.md", "guide/interfaz/enemy_player.md",
+                "guide/interfaz/example.md", "guide/interfaz/GameWindow.md", "guide/interfaz/PlayerPanel.md"]
+        },
     ]
 });
