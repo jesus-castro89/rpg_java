@@ -9,42 +9,35 @@ export default sidebar({
             link: "guide/"
         },
         {
-            text: "Los paquetes",
-            icon: "folder",
-            link: "guide/structure.md"
-        },
-        {
-            text: "1.- El personaje",
+            text: "1.- El personaje, Los items y las armaduras",
             collapsible: true,
             icon: "user",
             children: ["guide/player/README.md", "guide/player/armors.md"]
         },
         {
-            text: "2.- Los enemigos",
-            collapsible: true,
-            icon: "wand-sparkles",
-            children: ["guide/enemies/structure.md", "guide/enemies/README.md", "guide/enemies/player.md"]
-        },
-        {
-            text: "3.- El Inventario y los Items",
+            text: "2.- El Inventario",
             collapsible: true,
             icon: "briefcase",
-            children: ["guide/inventory/structure.md", "guide/inventory/item.md", "guide/inventory/README.md"]
+            children: ["guide/player/inventory.md"]
         },
         {
-            text: "4.- El primer ciclo de juego",
+            text: "3.- Las utilidades",
             collapsible: true,
-            icon: "gamepad",
-            children: ["guide/interactions/structure.md", "guide/interactions/README.md", "guide/interactions/drop.md",
-                "guide/interactions/items.md", "guide/interactions/player.md", "guide/interactions/game.md",
-                "guide/interactions/file.md"]
+            icon: "briefcase",
+            children: ["guide/utilities/README.md", "guide/utilities/exceptions.md"]
+        },
+        {
+            text: "4.- Los enemigos",
+            collapsible: true,
+            icon: "wand-sparkles",
+            children: ["guide/enemies/README.md", "guide/enemies/factory.md", "guide/enemies/example.md"]
         },
         {
             text: "5.- La interfaz Gráfica",
             collapsible: true,
             icon: "gamepad",
-            children: ["guide/interfaz/structure.md", "guide/interfaz/README.md", "guide/interfaz/enemy_player.md",
-                "guide/interfaz/example.md", "guide/interfaz/GameWindow.md", "guide/interfaz/PlayerPanel.md"]
+            children: ["guide/interfaz/README.md", "guide/interfaz/buttons.md", "guide/interfaz/newgame.md",
+                "guide/interfaz/GameWindow.md", "guide/interfaz/PlayerPanel.md"]
         },
     ]
 });
