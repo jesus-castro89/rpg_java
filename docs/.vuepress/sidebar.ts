@@ -24,7 +24,8 @@ export default sidebar({
             text: "3.- Las utilidades",
             collapsible: true,
             icon: "briefcase",
-            children: ["guide/utilities/README.md", "guide/utilities/exceptions.md"]
+            children: ["guide/utilities/README.md", "guide/utilities/exceptions.md",
+                "guide/utilities/BackGroundPanel.md",]
         },
         {
             text: "4.- Los enemigos",
@@ -33,11 +34,10 @@ export default sidebar({
             children: ["guide/enemies/README.md", "guide/enemies/factory.md", "guide/enemies/example.md"]
         },
         {
-            text: "5.- La interfaz Gráfica",
+            text: "5.- Gestionando Archivos y Datos",
             collapsible: true,
             icon: "gamepad",
-            children: ["guide/interfaz/README.md", "guide/interfaz/buttons.md", "guide/interfaz/newgame.md",
-                "guide/interfaz/GameWindow.md", "guide/interfaz/PlayerPanel.md"]
+            children: ["guide/data/README.md", "guide/data/update.md"]
         },
     ]
 });
