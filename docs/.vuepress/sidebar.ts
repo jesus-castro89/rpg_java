@@ -39,5 +39,11 @@ export default sidebar({
             icon: "gamepad",
             children: ["guide/data/README.md", "guide/data/update.md"]
         },
+        {
+            text: "6.- Redimensionando la ventana y Cambiando el estilo",
+            collapsible: true,
+            icon: "window-restore",
+            children: ["guide/window/README.md", "guide/window/labels.md", "guide/window/fonts.md"]
+        },
     ]
 });
