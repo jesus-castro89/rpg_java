@@ -45,5 +45,11 @@ export default sidebar({
             icon: "window-restore",
             children: ["guide/window/README.md", "guide/window/labels.md", "guide/window/fonts.md"]
         },
+        {
+            text: "7.- La tienda",
+            collapsible: true,
+            icon: "window-restore",
+            children: ["guide/shop/README.md"]
+        },
     ]
 });
